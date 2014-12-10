@@ -8,4 +8,4 @@ The text is courtesy of [Jeremy Hylton](https://www.python.org/~jeremy/), who po
 ## Contents
 
 - In `/data-hold`:
-  + `shakespeare.mit.edu` - this is a straight up mirror of [Hylton's Shakespeare collection](http://shakespeare.mit.edu/) using `wget -m -w 1 http://shakespeare.mit.edu/`
+  + `shakespeare.mit.edu` - this is a straight up mirror of [Hylton's Shakespeare collection](http://shakespeare.mit.edu/) using `wget --mirror --wait=1 http://shakespeare.mit.edu/`
