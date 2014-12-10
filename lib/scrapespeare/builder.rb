@@ -8,7 +8,7 @@ module ScrapeSpeare
         npage = parse_html(path)
         h = {path: path}
         h[:play_slug], h[:act], h[:scene] = File.basename(path, '.html').split('.').tap{|o| o[1] = o[1].to_i; o[2] = o[2].to_i}
-        h[:play_title] = npage.search('table > tr > td.play')[0].children[0].text
+        h[:play_title] = npage.search('table > tr > td.play')[0].children[0].text.strip
         h[:scene_title] = npage.search('h3').text.strip
         h[:lines] = []
         h[:lines] << {type: 'direction', text:  npage.search('blockquote')[0].text.strip }
@@ -16,7 +16,7 @@ module ScrapeSpeare
         npage.search('blockquote')[0].xpath('following-sibling::*').inject(h[:lines]) do |arr, node|
           case node.name
           when 'a' # new speech
-            current_speaker = node.text
+            current_speaker = node.text.strip
             current_speech_num = node.attr('name')[/\d+/].to_i
             h_speaker = {speaker: current_speaker, speech_number: current_speech_num }
             # next element is a blockquote
