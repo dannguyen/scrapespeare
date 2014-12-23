@@ -1,8 +1,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__)) # put ../lib in the path
 require 'pathname'
 module ScrapeSpeare
-  DATA_DIR = Pathname.new File.expand_path( '../../data-hold', __FILE__)
-  MIRROR_DIR = DATA_DIR.join('shakespeare.mit.edu')
+  DATA_DIR = Pathname.new File.expand_path( '../../data-hold/builds', __FILE__)
   TEXT_DIR  = DATA_DIR.join('text')
   def self.build!
     scenes = ScrapeSpeare::Builder.gather_individual_play_scenes
@@ -45,8 +44,6 @@ module ScrapeSpeare
       end
     end
   end
-
-# sudo apt-get install libopencv-dev
 end
 
 
